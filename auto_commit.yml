@@ -1,0 +1,30 @@
+name: Auto Commit
+
+on:
+  push:
+    paths:
+      - 'testrepo2/*'  # Assuming testrepo2 is at the root of your repository
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Configure Git
+        run: |
+          git config --global user.email "manibh.sain@gmail.com"
+          git config --global user.name "Manibh1"
+          
+      - name: Add changes
+        run: git add testrepo2/
+        
+      - name: Commit changes
+        run: git commit -m "Auto-commit: New changes"
+        
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
