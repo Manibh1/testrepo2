@@ -22,7 +22,7 @@ jobs:
         run: git add testrepo2/
         
       - name: Commit changes
-        run: git commit -m "Auto-commit: New changes"
+        run: git commit -m "Auto-commit:New changes"
         
       - name: Push changes
         uses: ad-m/github-push-action@master
